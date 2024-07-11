@@ -1,0 +1,8 @@
+matplotlib==3.8.0
+pandas==2.2.2
+numpy==1.26.1
+textblob==0.15.3
+nltk==3.8.1
+seaborn==0.13.0
+scipy==1.11.3
+json==2.0.9
