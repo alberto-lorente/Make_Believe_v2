@@ -35,11 +35,13 @@ def predict_text(text):
     return result_dict_translation[prediction]
 
 
-text_predictor = gr.Interface(
-    fn=predict_text,
-    inputs=["text"],
-    outputs=["text"],
-)
+with gr.Blocks() as text_predictor:
+
+    news = gr.Textbox(label="News")
+    outputs = gr.Textbox(label="Output")
+    predict_news_button = gr.Button("Process")
+    predict_news_button.click(fn=predict_text, inputs=news, outputs=outputs)
+
 
 text_predictor.launch()
 
