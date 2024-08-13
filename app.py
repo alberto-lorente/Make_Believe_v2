@@ -21,8 +21,6 @@ def extract_linguistic_features(text):
 
 def predict_text(text):
     
-    # text_utf8 = text.encode("utf-8")
-    
     with open("pipeline.pkl", 'rb') as f:
         pipeline = pickle.load(f)
     
@@ -30,18 +28,24 @@ def predict_text(text):
     prediction_array = pipeline.predict(X_transformed)
     prediction = prediction_array[0]
     
-    result_dict_translation = {0:"Fake", 1:"True"}
+    result_dict_translation = {0:"Fake 🤬", 1:"True 🤩"}
     
     return result_dict_translation[prediction]
 
 
-with gr.Blocks() as text_predictor:
+theme = 'freddyaboulton/dracula_revamped'
 
-    news = gr.Textbox(label="News")
-    outputs = gr.Textbox(label="Output")
-    predict_news_button = gr.Button("Process")
-    predict_news_button.click(fn=predict_text, inputs=news, outputs=outputs)
-
+with gr.Blocks(theme=theme) as text_predictor:
+    gr.Markdown("""# Make Believe Fake News Classifier
+                English language news classifier based on psycholinguistic and textual coherence features.""")
+    with gr.Row():
+        news = gr.Textbox(label="News", lines=3, placeholder="Enter a piece of news.")
+        outputs = gr.Textbox(label="Output")
+    with gr.Row():
+        predict_news_button = gr.Button("Process", variant="primary", scale=0.3)
+        predict_news_button.click(fn=predict_text, inputs=news, outputs=outputs)
+    with gr.Row():
+        gr.Markdown("""For more information about the model development process you can check out {git-repo} 🤗.""")
 
 text_predictor.launch()
 
