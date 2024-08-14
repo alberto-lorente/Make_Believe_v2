@@ -25,14 +25,14 @@ Instead of calculating the features for the whole dataset, 400 pieces of news we
 
 To illustrate the difference this step made, we can observe the initial correlation of the features in the first image and how many features that were correlated were eliminated after. Notice the decrease in darker colors (highly correlated) in the second image:
 
-![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20before.png "Logo Title Text 2")
+![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20before.png "")
 
-![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20after.png "Logo Title Text 2")
+![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20after.png "")
 
 Once the features were trimmed down from 220 to around 40, the features were calculated for the whole dataset. To select the final features, recursive feature analysis was performed and 7 features were selected. 
 
 
-![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/rfe.png "Logo Title Text 2")
+![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/rfe.png "")
 
 These were:
 
@@ -52,8 +52,7 @@ After playing around with a couple of traditional machine learning models, I set
 
 The final model had a f-1 weighted score of 0.77.
 
-Confussion Matrix
-![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/confusion%20matrix.png "Logo Title Text 2")
+![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/confusion%20matrix.png "")
 
 ## Gradio App
 
