@@ -1,4 +1,5 @@
-gradio==4.41.0
+gradio
+scikit-learn==1.4.0
 lftk==1.0.9
 pandas==2.2.2
 spacy==3.7.4
