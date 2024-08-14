@@ -42,7 +42,7 @@ These were:
 
 | Feature               | Description  |
 | --------------        |:-------------:|
-| t_syll3               | total number of words more than three syllables|
+| t_syll3               | total number of words more than three syllables |
 | root_propn_var        | root proper nouns variation |
 | root_space_var        | root spaces variation |
 | corr_punct_var        | corrected punctuations variation |
@@ -52,5 +52,15 @@ These were:
 
 ## Model
 
+After playing around with a couple of traditional machine learning models, I settled to use a Random Forest and the hyper-parameters were tuned through a gridsearch. 
 
+The final model had a f-1 weighted score of 0.77.
 
+Confussion Matrix
+![alt text][logo4]
+
+[logo4]: (https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/confusion%20matrix.png) "Logo Title Text 2"
+
+## Gradio App
+
+The model is available to play around with in a Gradio app hosted in Hugging Face spaces. Check the [Make Believe App](https://huggingface.co/spaces/alberto-lorente/Make_Believe)!
