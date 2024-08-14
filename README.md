@@ -1,2 +1,21 @@
-Make Believe 
- 
+# Make Believe 
+
+
+**Make Believe** is a project to develop a machine learning solution to detect long-form fake news through the use of __psycholinguistic__, coherence and readibility scores, calculated with [lftk](https://github.com/brucewlee/lftk/blob/main/readme.md#essential-tips-and-to-do-guides). The dataset used to train and evaluate the model can be found [here](https://www.kaggle.com/datasets/hassanamin/textdb3).
+
+## Challenges
+
+The main challenge of the approach is the inherent __colinear__ nature of many of these linguistic features. Let's take a couple of the features found in ltfk for example: 
+
+| Feature        | Description  |
+| -------------- |:-------------:|
+| n_noun         | total number of nouns|
+| n_unoun        | total number of unique nouns |
+| t_uword        | total number of unique words |
+
+Intuitively, we can infer that the more unique nouns there are in a text, the more unique words there will be, and viceversa.
+
+In lftk, there are a total of 220 features. This vast number means that compute will be an issue for large amounts of data and there would be redundant, potentially noisy, features in the model if we used all of them.
+
+
+
