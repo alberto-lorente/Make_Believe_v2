@@ -25,11 +25,11 @@ To illustrate the difference this step made, we can observe the initial correlat
 
 ![alt text][logo1]
 
-[logo1]: Images, plots, graphs/correlation before.png "Logo Title Text 2"
+[logo1]: [Images, plots, graphs/correlation before.png](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20before.png) "Logo Title Text 2"
 
 ![alt text][logo2]
 
-[logo2]: Images, plots, graphs/correlation before.png "Logo Title Text 2"
+[logo2]: [Images, plots, graphs/correlation before.png](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20after.png) "Logo Title Text 2"
 
 
 
