@@ -45,7 +45,8 @@ with gr.Blocks(theme=theme) as text_predictor:
         predict_news_button = gr.Button("Process", variant="primary", scale=0.3)
         predict_news_button.click(fn=predict_text, inputs=news, outputs=outputs)
     with gr.Row():
-        gr.Markdown("""For more information about the model development process you can check out {git-repo} 🤗.""")
+        gr.Markdown(f"For more information about the model development process you can check out the <a href='https://github.com/alberto-lorente/Make_Believe_v2.git'> git repo</a> 🤗.")
+        # gr.Markdown("""For more information about the model development process you can check out {git-repo} 🤗.""")
 
 text_predictor.launch()
 
