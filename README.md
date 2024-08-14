@@ -23,9 +23,13 @@ Instead of calculating the features for the whole dataset, 400 pieces of news we
 
 To illustrate the difference this step made, we can observe the initial correlation of the features in the first image and how many features that were correlated were eliminated after. Notice the decrease in darker colors (highly correlated) in the second image:
 
-![alt text]([https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20before.png "Before")
+![alt text][logo1]
 
- ![alt text]([https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20before.png](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20after.png) "After")
+[logo1]: Images, plots, graphs/correlation before.png "Logo Title Text 2"
+
+![alt text][logo2]
+
+[logo2]: Images, plots, graphs/correlation before.png "Logo Title Text 2"
 
 
 
