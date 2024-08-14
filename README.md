@@ -23,10 +23,12 @@ In lftk, there are a total of 220 features. This vast number means that compute 
 
 Instead of calculating the features for the whole dataset, 400 pieces of news were randomly sampled to calculate the linguistic features effectively and ultimately determine through VIF which features could be omitted altogether before moving on to the feature selection for the model. 
 
-To illustrate the difference this step made, we can observe the initial correlation of the features in the first image and how many features that were correlated were eliminated after. Notice the decrease in darker colors (highly correlated) in the second image:
+To illustrate the difference this step made, we can observe the initial correlation of the features in the first image and how many features that were correlated were eliminated after.
 
+Notice the amount of squares of darker colors (highly correlated):
 ![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20before.png "")
 
+And the in the second image:
 ![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20after.png "")
 
 Once the features were trimmed down from 220 to around 40, the features were calculated for the whole dataset. To select the final features, recursive feature analysis was performed and 7 features were selected. 
