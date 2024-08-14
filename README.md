@@ -31,6 +31,26 @@ To illustrate the difference this step made, we can observe the initial correlat
 
 [logo2]: (https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20after.png) "Logo Title Text 2"
 
+Once the features were trimmed down from 220 to around 40, the features were calculated for the whole dataset. To select the final features, recursive feature analysis was performed and 7 features were selected. 
+
+
+![alt text][logo23]
+
+[logo3]: (https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/rfe.png) "Logo Title Text 2"
+
+These were:
+
+| Feature               | Description  |
+| --------------        |:-------------:|
+| t_syll3               | total number of words more than three syllables|
+| root_propn_var        | root proper nouns variation |
+| root_space_var        | root spaces variation |
+| corr_punct_var        | corrected punctuations variation |
+| uber_ttr_no_lem       | uber type token ratio no lemma |
+| a_propn_ps            | average number of proper nouns per sentence |
+| smog                  | smog index |
+
+## Model
 
 
 
