@@ -26,9 +26,11 @@ Instead of calculating the features for the whole dataset, 400 pieces of news we
 To illustrate the difference this step made, we can observe the initial correlation of the features in the first image and how many features that were correlated were eliminated after.
 
 Notice the amount of squares of darker colors (highly correlated):
+
 ![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20before.png "")
 
-And the in the second image:
+And its decrease in the second image:
+
 ![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/correlation%20after.png "")
 
 Once the features were trimmed down from 220 to around 40, the features were calculated for the whole dataset. To select the final features, recursive feature analysis was performed and 7 features were selected. 
