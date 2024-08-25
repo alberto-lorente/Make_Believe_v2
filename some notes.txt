@@ -1,4 +1,11 @@
-TO DO'S: Readme/Documentation
+TO DO'S: - add shap to app, + readme/doc, comments;
+
+
+
+
+
+
+
 no permutation as feature selection since with colinear features, the info will be obtainable with a different feature
 
 workflow: 
