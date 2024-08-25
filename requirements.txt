@@ -1,7 +1,9 @@
 gradio
 scikit-learn==1.4.0
+matplotlib==3.8.0
 lftk==1.0.9
 pandas==2.2.2
 spacy==3.7.4
+shap==0.46.0
 
 en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
