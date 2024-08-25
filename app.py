@@ -7,8 +7,6 @@ import lftk
 import spacy
 import shap
 
-shap.initjs()
-
 def extract_linguistic_features(text):
     
     doc = nlp(text)
@@ -66,7 +64,7 @@ def explain_prediction(text):
     scores_desc = list(zip(shap_array, cols))
     scores_desc = sorted(scores_desc)
     
-    fig = plt.figure()
+    fig = plt.figure(tight_layout=True)
     plt.barh([s[1] for s in scores_desc], [s[0] for s in scores_desc])
     plt.title(f"Expected {expected_value} - Model Output {final_value}\n Feature Shap Values")
     plt.ylabel("Feature")
@@ -97,7 +95,7 @@ with gr.Blocks(theme=theme) as app:
     with gr.Row():
         news = gr.Textbox(label="News", lines=3, placeholder="Enter a piece of news.")
         outputs = gr.Textbox(label="Output")
-        plot = gr.Plot()
+        plot = gr.Plot(label="SHAP Explanation")
     with gr.Row():
         predict_news_button = gr.Button("Process", variant="primary", scale=0.3)
         predict_news_button.click(fn=predict_text, inputs=news, outputs=outputs)
