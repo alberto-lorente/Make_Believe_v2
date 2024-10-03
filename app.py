@@ -90,8 +90,8 @@ with open('model.pkl', 'rb') as f:
 # print(type(model))
 
 with gr.Blocks(theme=theme) as app:
-    gr.Markdown("""# Make Believe Fake News Classifier
-                English language news classifier based on psycholinguistic and textual coherence features.""")
+    gr.Markdown("""# Make Believe-2016 US Election Fake News Classifier
+                English language news classifier trained on news related to the 2016 US Presidential Election.""")
     with gr.Row():
         news = gr.Textbox(label="News", lines=3, placeholder="Enter a piece of news.")
         outputs = gr.Textbox(label="Output")
