@@ -10,20 +10,32 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer, Text
 
 def transformer_predict(text):
     
-    prediction = pipeline([text])[0]["label"]
+    prediction = transformer_pipeline(text)[0]["label"]
     
     return prediction
 
 def explain_transformer_prediction(text):
 
+    prediction = transformer_pipeline(text)[0]["label"]
+    binary_prediction = label2id[prediction]
+
     shap_values = transformer_explainer([text])
-    shap.plots.text(shap_values)
     
-    plt.tight_layout()
-    fig = plt.gcf()
-    plt.close()
+    shap_array_values = shap_values[0, :, binary_prediction].values
+    shap_array_vocab = shap_values[0, :, binary_prediction].data
     
-    return fig
+    shap_dict = dict(zip(shap_array_vocab, shap_array_values))
+    sorted_shap_tuples = sorted(shap_dict.items(), key=lambda x:x[1])
+    sorted_shap_dict = dict(sorted_shap_tuples)
+    
+    fig = plt.figure(tight_layout=True)
+    
+    plt.barh(sorted_shap_dict.keys(), sorted_shap_dict.values())
+    plt.title(f"Feature Contribution with Shap Values")
+    plt.ylabel("Feature")
+    plt.xlabel("Shap Value")
+    
+    return fig  
     
 def extract_linguistic_features(text):
     
@@ -96,7 +108,7 @@ theme = 'freddyaboulton/dracula_revamped'
 # for hf model
 model_name = "alberto-lorente/distilbert-make-believe16"
 
-label2id = {"True": 1, "Fake":0}
+label2id = {"True 🤩": 1, "Fake 🤬":0}
 id2label = {value: key for key, value in label2id.items()}
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -104,8 +116,8 @@ model = AutoModelForSequenceClassification.from_pretrained(model_name,
                                                         num_labels=2, 
                                                         id2label=id2label, 
                                                         label2id=label2id)
-pipeline = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True)
-transformer_explainer = shap.Explainer(pipeline)
+transformer_pipeline = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=False)
+transformer_explainer = shap.Explainer(transformer_pipeline)
 
 # for ml model
 nlp = spacy.load("en_core_web_sm")
@@ -132,10 +144,10 @@ with gr.Blocks(theme=theme) as app:
         plot = gr.Plot(label="SHAP Explanation")
     with gr.Row():
         predict_news_button = gr.Button("Process", variant="primary", scale=0.3)
-        predict_news_button.click(fn=predict_text_ml, inputs=news, outputs=outputs)
+        predict_news_button.click(fn=transformer_predict, inputs=news, outputs=outputs)
         
         explain_button = gr.Button("Explain", variant="secondary", scale=0.3)
-        explain_button.click(fn=explain_ml_prediction, inputs=news, outputs=plot)
+        explain_button.click(fn=explain_transformer_prediction, inputs=news, outputs=plot)
         
     with gr.Row():
         gr.Markdown(f"For more information about the model development process you can check out the <a href='https://github.com/alberto-lorente/Make_Believe_v2.git'> git repo</a> 🤗.")
