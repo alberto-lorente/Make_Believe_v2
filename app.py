@@ -6,7 +6,25 @@ import matplotlib.pyplot as plt
 import lftk
 import spacy
 import shap
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, TextClassificationPipeline
 
+def transformer_predict(text):
+    
+    prediction = pipeline([text])[0]["label"]
+    
+    return prediction
+
+def explain_transformer_prediction(text):
+
+    shap_values = transformer_explainer([text])
+    shap.plots.text(shap_values)
+    
+    plt.tight_layout()
+    fig = plt.gcf()
+    plt.close()
+    
+    return fig
+    
 def extract_linguistic_features(text):
     
     doc = nlp(text)
@@ -20,7 +38,7 @@ def extract_linguistic_features(text):
     
     return X
 
-def predict_text(text):
+def predict_text_ml(text):
     
     X_transformed = extract_linguistic_features(text)
     
@@ -33,7 +51,9 @@ def predict_text(text):
     
     return prediction
 
-def explain_prediction(text):
+
+
+def explain_ml_prediction(text):
     
     X_transformed = extract_linguistic_features(text)
     
@@ -51,9 +71,8 @@ def explain_prediction(text):
             'smog_index']
     
     X_explain = pd.DataFrame(scaled_X, columns=cols)
-    explainer = shap.TreeExplainer(model, model_output="raw")
     
-    shap_values = explainer(pd.DataFrame(X_explain))
+    shap_values = ml_explainer(pd.DataFrame(X_explain))
 
     shap_array = shap_values[0, :, prediction_binary].values
     
@@ -74,6 +93,21 @@ def explain_prediction(text):
 
 theme = 'freddyaboulton/dracula_revamped'
 
+# for hf model
+model_name = "alberto-lorente/distilbert-make-believe16"
+
+label2id = {"True": 1, "Fake":0}
+id2label = {value: key for key, value in label2id.items()}
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, 
+                                                        num_labels=2, 
+                                                        id2label=id2label, 
+                                                        label2id=label2id)
+pipeline = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True)
+transformer_explainer = shap.Explainer(pipeline)
+
+# for ml model
 nlp = spacy.load("en_core_web_sm")
 
 with open("pipeline.pkl", 'rb') as f:
@@ -84,10 +118,10 @@ with open("scaler.pkl", 'rb') as f:
     
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
+    
+ml_explainer = shap.TreeExplainer(model, model_output="raw")
 
-# print(type(pipeline))
-# print(type(scaler))
-# print(type(model))
+    
 
 with gr.Blocks(theme=theme) as app:
     gr.Markdown("""# Make Believe-2016 US Election Fake News Classifier
@@ -98,10 +132,10 @@ with gr.Blocks(theme=theme) as app:
         plot = gr.Plot(label="SHAP Explanation")
     with gr.Row():
         predict_news_button = gr.Button("Process", variant="primary", scale=0.3)
-        predict_news_button.click(fn=predict_text, inputs=news, outputs=outputs)
+        predict_news_button.click(fn=predict_text_ml, inputs=news, outputs=outputs)
         
         explain_button = gr.Button("Explain", variant="secondary", scale=0.3)
-        explain_button.click(fn=explain_prediction, inputs=news, outputs=plot)
+        explain_button.click(fn=explain_ml_prediction, inputs=news, outputs=plot)
         
     with gr.Row():
         gr.Markdown(f"For more information about the model development process you can check out the <a href='https://github.com/alberto-lorente/Make_Believe_v2.git'> git repo</a> 🤗.")
