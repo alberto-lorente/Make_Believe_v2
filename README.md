@@ -1,9 +1,11 @@
 # Make Believe 
 
 
-**Make Believe-2016** is a project to develop a machine learning solution to detect long-form fake news related to the 2016 US Presidential Election through the use of __psycholinguistic__, coherence and readibility scores, calculated with [lftk](https://github.com/brucewlee/lftk/blob/main/readme.md#essential-tips-and-to-do-guides). The dataset used to train and evaluate the model can be found [here](https://www.kaggle.com/datasets/hassanamin/textdb3). 
+**Make Believe-2016** is a project to develop a machine learning solution to detect long-form fake news related to the 2016 US Presidential Election. Two approaches were carried out: 1. training a random forest algorithm through the use of __psycholinguistic__, coherence and readibility scores, calculated with [lftk](https://github.com/brucewlee/lftk/blob/main/readme.md#essential-tips-and-to-do-guides) and 2. finetuning a model in the Bert family. The dataset used to train and evaluate the model can be found [here](https://www.kaggle.com/datasets/hassanamin/textdb3). 
 
 Check the [Make Believe App](https://huggingface.co/spaces/alberto-lorente/Make_Believe)!
+
+# Random Forest Approach
 
 ## Challenges
 
@@ -56,8 +58,11 @@ After playing around with a couple of traditional machine learning models, I set
 
 The final model had a f-1 weighted score of 0.77.
 
-![alt text](https://github.com/alberto-lorente/Make_Believe_v2/blob/main/Images%2C%20plots%2C%20graphs/confusion%20matrix.png "")
 
-## Gradio App
+# DistilBert Approach
 
-The model is available to play around with in a Gradio app hosted in Hugging Face spaces. Check the [Make Believe App](https://huggingface.co/spaces/alberto-lorente/Make_Believe)!
+I choose a lighter distilBert base model to finetune with the mentioned dataset. 
+
+# Gradio App
+
+The models are available to play around with in a Gradio app hosted in Hugging Face spaces. Check the [Make Believe App](https://huggingface.co/spaces/alberto-lorente/Make_Believe)!
