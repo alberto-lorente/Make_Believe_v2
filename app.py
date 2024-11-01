@@ -179,6 +179,7 @@ def explain(text, model):
         return explanation_fig
     
 with gr.Blocks(theme=theme) as app:
+    
     gr.Markdown("""# Project Make Believe-2016: US Election Fake News Detection
                 English language news classifiers trained on news related to the 2016 US Presidential Election.""")
     
