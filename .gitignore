@@ -2,3 +2,6 @@
 /.venv-make_believe
 /.vscode
 0. PROGRESS.txt
+4_2_Transformer_Model_v2.ipynb
+data_split_indexes.json
+news_processed_spacy.csv
