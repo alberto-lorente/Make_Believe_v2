@@ -61,7 +61,7 @@ The final model had a f-1 weighted score of 0.77.
 
 # DistilBert Approach
 
-I choose a lighter distilBert base model to finetune with the mentioned dataset (same data splits as the previous traditional ml model). After some trials, the model was run for 20 epochs with a batch size of 32 and a learning rate of 0.00002. The best validation loss was encountered in the third epoch, which resulted in a f1 score of .976641 in the validation set. This model was then evaluated and achieved a .9574 f1 score in the test set.
+I choose a lighter distilBert base model to finetune with the mentioned dataset (same data splits as the previous traditional ml model). After some trials, the model was run for 20 epochs with a batch size of 32 and a learning rate of 0.00002. The best validation loss was encountered in the second epoch, which resulted in a f1 score of .967 in the validation set. This model was then evaluated and achieved a .96 f1 score in the test set.
 
 # Gradio App
 
